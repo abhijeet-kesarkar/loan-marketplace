@@ -10,6 +10,6 @@ public class LoanTest {
         Loan loan = new Loan("IDIDI", "Dale", 10000, 5, 4);
         Balance balance = loan.balance(5);
         assertEquals(1000, balance.getAmountPaid());
-        assertEquals(55, balance.getRemainingEMIs());
+        assertEquals(55, balance.getNoOfEMIsRemaining());
     }
 }
