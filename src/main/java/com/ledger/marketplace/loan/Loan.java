@@ -17,6 +17,11 @@ public class Loan {
     }
 
     public Balance balance(int emiNo) {
-        return new Balance(1000, 55);
+        int interest = principal * noOfYears * rateOfInterest / 100;
+        double amount = principal + interest;
+        int emi = (int) Math.ceil(amount / (noOfYears * 12));
+        int amountPaid = emiNo * emi;
+        int noOfEMIsRemaining = (int) Math.ceil((amount - amountPaid) / emi);
+        return new Balance(amountPaid, noOfEMIsRemaining);
     }
 }
