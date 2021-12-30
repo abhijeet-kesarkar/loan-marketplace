@@ -36,4 +36,12 @@ public class LoanTest {
         assertEquals(0, balance.getAmountPaid());
         assertEquals(24, balance.getNoOfEMIsRemaining());
     }
+
+    @Test
+    public void testBalanceForHarryAfter24EMIs(){
+        Loan loan = new Loan("MBI", "Harry", 2000, 2, 2);
+        Balance balance = loan.balance(24);
+        assertEquals(2080, balance.getAmountPaid());
+        assertEquals(0, balance.getNoOfEMIsRemaining());
+    }
 }
