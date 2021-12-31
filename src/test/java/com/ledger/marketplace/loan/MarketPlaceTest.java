@@ -25,4 +25,14 @@ public class MarketPlaceTest {
 
         assertEquals("MBI Harry 1044 12", balance);
     }
+
+    @Test
+    public void testCreateLoanForHarryCaseInsensitive(){
+        MarketPlace marketPlace = new MarketPlace();
+        marketPlace.createLoan("MBI", "Harry", 2000, 2, 2);
+
+        String balance = marketPlace.getBalance("mbi", "harry", 12);
+
+        assertEquals("MBI Harry 1044 12", balance);
+    }
 }
