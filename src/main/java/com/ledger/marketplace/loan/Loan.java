@@ -1,11 +1,14 @@
 package com.ledger.marketplace.loan;
 
+import java.util.HashMap;
+
 public class Loan {
     private final String bankName;
     private final String borrowerName;
     private final int principal;
     private final int noOfYears;
     private final double rateOfInterest;
+    private HashMap<Integer, Integer> payments = new HashMap<>();
 
     public Loan(String bankName, String borrowerName, int principal, int noOfYears, double rateOfInterest) {
 
@@ -23,12 +26,16 @@ public class Loan {
 
         int amountPaid = 0;
         double balanceAmount = amount;
-        for( int i=0; i<emiNo; i++)
-        {
+        for (int i = 1; i <= emiNo; i++) {
             amountPaid += balanceAmount < emi ? balanceAmount : emi;
+            amountPaid += payments.getOrDefault(i, 0);
             balanceAmount = amount - amountPaid;
         }
         int noOfEMIsRemaining = (int) Math.ceil(balanceAmount / emi);
         return new Balance(amountPaid, noOfEMIsRemaining);
+    }
+
+    public void payment(int lumpSumAmount, int emiNo) {
+        payments.put(emiNo, lumpSumAmount);
     }
 }
