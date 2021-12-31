@@ -57,4 +57,22 @@ public class LoanTest {
         assertEquals(3652, balanceAfter6EMIs.getAmountPaid());
         assertEquals(4, balanceAfter6EMIs.getNoOfEMIsRemaining());
     }
+
+    @Test
+    public void testPaymentForHarryAfter10thEMI() {
+        Loan loan = new Loan("MBI", "Harry", 10000, 3, 7);
+        loan.payment(5000, 10);
+        Balance balance = loan.balance(12);
+        assertEquals(9044, balance.getAmountPaid());
+        assertEquals(10, balance.getNoOfEMIsRemaining());
+    }
+
+    @Test
+    public void testPaymentForShellyAfter12thEMI() {
+        Loan loan = new Loan("UON", "Shelly", 15000, 2, 9);
+        loan.payment(7000, 12);
+        Balance balance = loan.balance(12);
+        assertEquals(15856, balance.getAmountPaid());
+        assertEquals(3, balance.getNoOfEMIsRemaining());
+    }
 }
