@@ -32,7 +32,7 @@ public class Loan {
             balanceAmount = amount - amountPaid;
         }
         int noOfEMIsRemaining = (int) Math.ceil(balanceAmount / emi);
-        return new Balance(amountPaid, noOfEMIsRemaining);
+        return new Balance(bankName, borrowerName, amountPaid, noOfEMIsRemaining);
     }
 
     public void payment(int lumpSumAmount, int emiNo) {
