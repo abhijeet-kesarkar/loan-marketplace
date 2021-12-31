@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class MarketPlace {
 
-    private HashMap<String, Loan> loans = new HashMap<>();
+    private final HashMap<String, Loan> loans = new HashMap<>();
 
     public String getBalance(String bankName, String borrowerName, int emiNo) {
         return loans.get(getKey(bankName, borrowerName)).balance(emiNo).toString();
@@ -16,5 +16,9 @@ public class MarketPlace {
 
     private String getKey(String bankName, String borrowerName) {
         return (bankName + borrowerName).toUpperCase();
+    }
+
+    public void makePayment(String bankName, String borrowerName, int lumpSumAmount, int emiNo) {
+        loans.get(getKey(bankName, borrowerName)).payment(lumpSumAmount, emiNo);
     }
 }
