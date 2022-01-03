@@ -16,6 +16,6 @@ public class PaymentCommand extends Command {
 
     @Override
     public void execute() {
-
+        this.marketPlace.makePayment("UON", "Shelly", 7000, 12);
     }
 }
