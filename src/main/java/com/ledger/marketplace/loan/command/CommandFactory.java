@@ -30,8 +30,6 @@ public class CommandFactory {
                     return new BalanceCommand(marketPlace, bankName, borrowerName, commandParams);
                 case PAYMENT_COMMAND:
                     return new PaymentCommand(marketPlace, bankName, borrowerName, commandParams);
-                default:
-                    throw new Exception("Invalid command");
             }
         }
         throw new Exception("Invalid command");
