@@ -4,6 +4,7 @@ import com.ledger.marketplace.loan.MarketPlace;
 
 public class CommandFactory {
     private static final String LOAN_COMMAND = "LOAN";
+    private static final String PAYMENT_COMMAND = "PAYMENT";
 
     public CommandFactory(MarketPlace marketPlace) {
     }
@@ -12,6 +13,9 @@ public class CommandFactory {
         if (command.startsWith(LOAN_COMMAND)) {
             return new LoanCommand();
         }
-        else return new PaymentCommand();
+        else if (command.startsWith(PAYMENT_COMMAND)){
+            return new PaymentCommand();
+        }
+        else return new BalanceCommand();
     }
 }
