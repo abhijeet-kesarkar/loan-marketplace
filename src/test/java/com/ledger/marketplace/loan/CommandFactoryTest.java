@@ -3,6 +3,7 @@ package com.ledger.marketplace.loan;
 import com.ledger.marketplace.loan.command.Command;
 import com.ledger.marketplace.loan.command.CommandFactory;
 import com.ledger.marketplace.loan.command.LoanCommand;
+import com.ledger.marketplace.loan.command.PaymentCommand;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
