@@ -4,11 +4,18 @@ import com.ledger.marketplace.loan.MarketPlace;
 
 public abstract class Command {
     protected MarketPlace marketPlace;
+    protected String bankName;
+    protected String borrowerName;
 
+    public Command(MarketPlace marketPlace, String bankName, String borrowerName, String commandParams) {
 
-    public Command(MarketPlace marketPlace, String command) {
         this.marketPlace = marketPlace;
+        this.bankName = bankName;
+        this.borrowerName = borrowerName;
+        this.parseParams(commandParams);
     }
 
-    public abstract void execute();
+    protected abstract void parseParams(String commandParams);
+
+    protected abstract void execute();
 }

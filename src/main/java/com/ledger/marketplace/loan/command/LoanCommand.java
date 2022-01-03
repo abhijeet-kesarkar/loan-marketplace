@@ -3,11 +3,24 @@ package com.ledger.marketplace.loan.command;
 import com.ledger.marketplace.loan.MarketPlace;
 
 public class LoanCommand extends Command {
-    public LoanCommand(MarketPlace marketPlace, String command) {
-        super(marketPlace, command);
+
+    private int principal;
+    private int noOfYears;
+    private double rateOfInterest;
+
+    public LoanCommand(MarketPlace marketPlace, String bankName, String borrowerName, String commandParams) {
+        super(marketPlace, bankName, borrowerName, commandParams);
+    }
+
+    @Override
+    protected void parseParams(String commandParams) {
+        String[] params = commandParams.split("\\s");
+        principal = Integer.parseInt(params[0]);
+        noOfYears = Integer.parseInt(params[1]);
+        rateOfInterest = Integer.parseInt(params[2]);
     }
 
     public void execute() {
-        this.marketPlace.createLoan("bank", "borrower", 100, 1, 1);
+        this.marketPlace.createLoan(bankName, borrowerName, principal, noOfYears, rateOfInterest);
     }
 }

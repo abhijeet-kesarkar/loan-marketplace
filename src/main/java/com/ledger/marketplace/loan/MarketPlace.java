@@ -10,7 +10,7 @@ public class MarketPlace {
         return loans.get(getKey(bankName, borrowerName)).balance(emiNo).toString();
     }
 
-    public void createLoan(String bankName, String borrowerName, int principal, int noOfYears, int rateOfInterest) {
+    public void createLoan(String bankName, String borrowerName, int principal, int noOfYears, double rateOfInterest) {
         loans.put(getKey(bankName, borrowerName), new Loan(bankName, borrowerName, principal, noOfYears, rateOfInterest));
     }
 
