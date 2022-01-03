@@ -15,6 +15,15 @@ public class CommandFactoryTest {
         MarketPlace marketPlace = new MarketPlace();
         CommandFactory commandFactory = new CommandFactory(marketPlace);
         Command command = commandFactory.create("LOAN bank borrower 100 1 1");
-        assertEquals(command.getClass(), LoanCommand.class);
+        assertEquals(LoanCommand.class, command.getClass());
+    }
+
+    @Test
+    public void testCreatePaymentCommand() {
+
+        MarketPlace marketPlace = new MarketPlace();
+        CommandFactory commandFactory = new CommandFactory(marketPlace);
+        Command command = commandFactory.create("PAYMENT bank borrower 100 1");
+        assertEquals(PaymentCommand.class, command.getClass());
     }
 }
