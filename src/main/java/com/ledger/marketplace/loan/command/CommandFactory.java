@@ -11,13 +11,13 @@ public class CommandFactory {
     }
 
     public Command create(String command) throws Exception {
-        if (command.startsWith(LOAN_COMMAND)) {
+        if (command.toUpperCase().startsWith(LOAN_COMMAND)) {
             return new LoanCommand();
         }
-        else if (command.startsWith(PAYMENT_COMMAND)){
+        else if (command.toUpperCase().startsWith(PAYMENT_COMMAND)){
             return new PaymentCommand();
         }
-        else if (command.startsWith(BALANCE_COMMAND)) {
+        else if (command.toUpperCase().startsWith(BALANCE_COMMAND)) {
             return new BalanceCommand();
         }
         else throw new Exception("Invalid command");

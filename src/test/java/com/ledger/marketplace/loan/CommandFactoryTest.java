@@ -36,6 +36,24 @@ public class CommandFactoryTest {
     }
 
     @Test
+    public void testCaseInsensitiveCreateLoanCommand() throws Exception {
+        Command command = commandFactory.create("loAn bank borrower 100 1 1");
+        assertEquals(LoanCommand.class, command.getClass());
+    }
+
+    @Test
+    public void testCaseInsensitiveCreatePaymentCommand() throws Exception {
+        Command command = commandFactory.create("payment bank borrower 100 1");
+        assertEquals(PaymentCommand.class, command.getClass());
+    }
+
+    @Test
+    public void testCaseInsensitiveCreateBalanceCommand() throws Exception {
+        Command command = commandFactory.create("Balance bank borrower 100 1");
+        assertEquals(BalanceCommand.class, command.getClass());
+    }
+
+    @Test
     public void testInvalidCommand() {
         assertThrows(Exception.class, () -> commandFactory.create("some bank borrower 100 1"));
     }
