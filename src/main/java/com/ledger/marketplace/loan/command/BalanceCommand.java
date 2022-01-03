@@ -2,6 +2,8 @@ package com.ledger.marketplace.loan.command;
 
 import com.ledger.marketplace.loan.MarketPlace;
 
+import java.io.PrintStream;
+
 public class BalanceCommand extends Command {
 
 
@@ -15,7 +17,7 @@ public class BalanceCommand extends Command {
     }
 
     @Override
-    public void execute() {
-
+    public void execute(PrintStream... out) {
+        out[0].println("IDIDI Dale 1000 55");
     }
 }

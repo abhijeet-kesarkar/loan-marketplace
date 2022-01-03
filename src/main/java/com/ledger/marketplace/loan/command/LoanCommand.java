@@ -2,6 +2,8 @@ package com.ledger.marketplace.loan.command;
 
 import com.ledger.marketplace.loan.MarketPlace;
 
+import java.io.PrintStream;
+
 public class LoanCommand extends Command {
 
     private int principal;
@@ -20,7 +22,8 @@ public class LoanCommand extends Command {
         rateOfInterest = Integer.parseInt(params[2]);
     }
 
-    public void execute() {
+    @Override
+    public void execute(PrintStream... out) {
         this.marketPlace.createLoan(bankName, borrowerName, principal, noOfYears, rateOfInterest);
     }
 }

@@ -2,6 +2,8 @@ package com.ledger.marketplace.loan.command;
 
 import com.ledger.marketplace.loan.MarketPlace;
 
+import java.io.PrintStream;
+
 public abstract class Command {
     protected MarketPlace marketPlace;
     protected String bankName;
@@ -17,5 +19,5 @@ public abstract class Command {
 
     protected abstract void parseParams(String commandParams);
 
-    protected abstract void execute();
+    protected abstract void execute(PrintStream... out);
 }

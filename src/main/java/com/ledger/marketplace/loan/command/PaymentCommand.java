@@ -2,6 +2,8 @@ package com.ledger.marketplace.loan.command;
 
 import com.ledger.marketplace.loan.MarketPlace;
 
+import java.io.PrintStream;
+
 public class PaymentCommand extends Command {
 
     private int lumpSumAmount;
@@ -19,7 +21,7 @@ public class PaymentCommand extends Command {
     }
 
     @Override
-    public void execute() {
+    public void execute(PrintStream... out) {
         this.marketPlace.makePayment(bankName, borrowerName, lumpSumAmount, emiNo);
     }
 }
