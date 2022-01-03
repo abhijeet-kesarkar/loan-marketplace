@@ -16,4 +16,14 @@ public class LoanCommandTest {
 
         assertEquals("bank borrower 0 12", marketPlace.getBalance("bank","borrower",0));
     }
+
+    @Test
+    public void testExecuteLoanCommandForBank2(){
+        String command = "LOAN bank2 borrower2 200 2 2";
+        MarketPlace marketPlace = new MarketPlace();
+        Command loanCommand = new LoanCommand(marketPlace, command);
+        loanCommand.execute();
+
+        assertEquals("bank2 borrower2 0 24", marketPlace.getBalance("bank","borrower",0));
+    }
 }
