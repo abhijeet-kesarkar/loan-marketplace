@@ -10,12 +10,11 @@ public class CommandFactory {
     private static final String PAYMENT_COMMAND = "PAYMENT";
     private static final String BALANCE_COMMAND = "BALANCE";
     private final MarketPlace marketPlace;
+    private final Pattern pattern = Pattern.compile("(LOAN|PAYMENT|BALANCE)\\s([a-z]+)\\s([a-z]+)\\s([0-9\\s]+)", Pattern.CASE_INSENSITIVE);
 
     public CommandFactory(MarketPlace marketPlace) {
         this.marketPlace = marketPlace;
     }
-
-    private final Pattern pattern = Pattern.compile("(LOAN|PAYMENT|BALANCE)\\s([a-z]+)\\s([a-z]+)\\s([0-9\\s]+)", Pattern.CASE_INSENSITIVE);
 
     public Command create(String command) throws Exception {
         Matcher matcher = pattern.matcher(command);

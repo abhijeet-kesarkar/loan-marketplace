@@ -8,7 +8,7 @@ public class Loan {
     private final int principal;
     private final int noOfYears;
     private final double rateOfInterest;
-    private HashMap<Integer, Integer> payments = new HashMap<>();
+    private final HashMap<Integer, Integer> payments = new HashMap<>();
 
     public Loan(String bankName, String borrowerName, int principal, int noOfYears, double rateOfInterest) {
 
