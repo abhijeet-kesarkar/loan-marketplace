@@ -2,6 +2,7 @@ package com.ledger.marketplace.loan.command;
 
 import com.ledger.marketplace.loan.MarketPlace;
 
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,7 +17,7 @@ public class CommandFactory {
         this.marketPlace = marketPlace;
     }
 
-    public Command create(String command) throws Exception {
+    public Optional<Command> create(String command) {
         Matcher matcher = pattern.matcher(command);
         if (matcher.find()) {
             String commandName = matcher.group(1).toUpperCase();
@@ -25,13 +26,13 @@ public class CommandFactory {
             String commandParams = matcher.group(4);
             switch (commandName) {
                 case LOAN_COMMAND:
-                    return new LoanCommand(marketPlace, bankName, borrowerName, commandParams);
+                    return Optional.of(new LoanCommand(marketPlace, bankName, borrowerName, commandParams));
                 case BALANCE_COMMAND:
-                    return new BalanceCommand(marketPlace, bankName, borrowerName, commandParams);
+                    return Optional.of(new BalanceCommand(marketPlace, bankName, borrowerName, commandParams));
                 case PAYMENT_COMMAND:
-                    return new PaymentCommand(marketPlace, bankName, borrowerName, commandParams);
+                    return Optional.of(new PaymentCommand(marketPlace, bankName, borrowerName, commandParams));
             }
         }
-        throw new Exception("Invalid command");
+        return Optional.empty();
     }
 }
