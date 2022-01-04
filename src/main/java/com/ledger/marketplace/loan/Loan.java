@@ -24,8 +24,8 @@ public class Loan {
         double amount = principal + interest;
         int emi = (int) Math.ceil(amount / (noOfYears * 12));
 
-        int amountPaid = 0;
-        double balanceAmount = amount;
+        int amountPaid = payments.getOrDefault(0, 0);
+        double balanceAmount = amount - amountPaid;
         for (int i = 1; i <= emiNo; i++) {
             amountPaid += balanceAmount < emi ? balanceAmount : emi;
             amountPaid += payments.getOrDefault(i, 0);

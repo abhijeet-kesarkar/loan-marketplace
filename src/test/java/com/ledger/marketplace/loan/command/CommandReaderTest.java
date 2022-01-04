@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CommandReaderTest {
 
@@ -32,6 +32,17 @@ class CommandReaderTest {
                 "IDIDI Dale 8000 20\n" +
                 "MBI Harry 1044 12\n" +
                 "MBI Harry 0 24\n";
+        assertEquals(expectedOutput, output.toString());
+    }
+
+    @Test
+    public void testReadFromFile3() throws Exception {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        String fileName = "./src/test/resources/test-file3.txt";
+        CommandReader.read(fileName, new PrintStream(output));
+
+        String expectedOutput = "MBI Dale 1000 40\n" +
+                "MBI Dale 3250 22\n";
         assertEquals(expectedOutput, output.toString());
     }
 }
